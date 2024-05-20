@@ -11,35 +11,15 @@ import java.util.stream.Collectors;
 @RestController
 public class SchoolController {
 
-    private SchoolRepository schoolRepository;
-
-    public SchoolController(SchoolRepository schoolRepository) {
-        this.schoolRepository = schoolRepository;
-    }
+    private SchoolService schoolService;
 
     @PostMapping("/schools")
     public SchoolDTOResponse addSchool(@RequestBody SchoolDTO schoolDTO){
-        School school = getSchool(schoolDTO);
-        School schoolSaved = schoolRepository.save(school);
-        return getSchoolResponse(schoolSaved);
-    }
-
-    private SchoolDTOResponse getSchoolResponse(School school){
-        return new SchoolDTOResponse(school.getName());
-    }
-
-    private School getSchool(SchoolDTO schoolDTO){
-        return new School(schoolDTO.schoolName());
-    }
-
-    private SchoolDTO convertToSchoolDTO(School school){
-        return new SchoolDTO(school.getName());
+        return schoolService.addSchool(schoolDTO);
     }
 
     @GetMapping("/schools")
     public List<SchoolDTO> getSchool(){
-        return schoolRepository.findAll().stream().
-                map(this::convertToSchoolDTO).
-                collect(Collectors.toList());
+        return  schoolService.getSchool();
     }
 }
