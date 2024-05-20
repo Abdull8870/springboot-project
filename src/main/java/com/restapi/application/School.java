@@ -1,5 +1,6 @@
 package com.restapi.application;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -16,6 +17,8 @@ public class School {
 
     private String name;
 
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "school")
     public List<Student> students;
 

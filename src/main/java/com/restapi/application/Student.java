@@ -1,5 +1,6 @@
 package com.restapi.application;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 
@@ -40,6 +41,7 @@ public class Student {
         this.school = school;
     }
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "school_id")
     private School school;
