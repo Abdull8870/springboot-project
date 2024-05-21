@@ -1,4 +1,4 @@
-package com.restapi.application;
+package com.restapi.application.student;
 
 public record StudentResponseDTO(
         String firstName,

@@ -1,4 +1,4 @@
-package com.restapi.application;
+package com.restapi.application.student;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

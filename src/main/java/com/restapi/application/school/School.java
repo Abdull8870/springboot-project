@@ -1,6 +1,7 @@
-package com.restapi.application;
+package com.restapi.application.school;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.restapi.application.student.Student;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

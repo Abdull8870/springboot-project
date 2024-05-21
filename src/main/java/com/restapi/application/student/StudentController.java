@@ -1,9 +1,16 @@
-package com.restapi.application;
+package com.restapi.application.student;
 
+import com.restapi.application.order.Order;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class StudentController {
@@ -53,7 +60,8 @@ public class StudentController {
     }
 
     @PostMapping("/students")
-    public StudentResponseDTO addStudent(@RequestBody StudentDTO stu){
+    public StudentResponseDTO addStudent(
+            @Valid @RequestBody StudentDTO stu){
         return studentService.saveStudent(stu);
     }
 
@@ -84,5 +92,19 @@ public class StudentController {
     public StudentResponseDTO getStudentById(@PathVariable(name="id") int id){
         return studentService.getStudentById(id);
     }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<?> handleMethodArgumentNotValidException
+            (MethodArgumentNotValidException exp){
+        Map<String,String> errorMap=new HashMap<String,String>();
+        exp.getBindingResult().getAllErrors().
+                forEach(error->{
+                    var fieldName=((FieldError) error).getField();
+                    var errorMessage=error.getDefaultMessage();
+                    errorMap.put(fieldName,errorMessage);
+                });
+        return new ResponseEntity<>(errorMap,HttpStatus.BAD_REQUEST);
+    }
+
 
 }

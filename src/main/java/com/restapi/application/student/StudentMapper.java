@@ -1,5 +1,6 @@
-package com.restapi.application;
+package com.restapi.application.student;
 
+import com.restapi.application.school.School;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,6 +1,4 @@
-package com.restapi.application;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+package com.restapi.application.order;
 
 public record OrderRecord(int quantity,
 

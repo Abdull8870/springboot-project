@@ -1,6 +1,5 @@
-package com.restapi.application;
+package com.restapi.application.order;
 
-import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Order {

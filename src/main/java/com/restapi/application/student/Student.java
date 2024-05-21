@@ -1,6 +1,8 @@
-package com.restapi.application;
+package com.restapi.application.student;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.restapi.application.studentProfile.StudentProfile;
+import com.restapi.application.school.School;
 import jakarta.persistence.*;
 
 

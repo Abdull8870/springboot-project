@@ -1,5 +1,6 @@
-package com.restapi.application;
+package com.restapi.application.studentProfile;
 
+import com.restapi.application.student.Student;
 import jakarta.persistence.*;
 
 @Entity
