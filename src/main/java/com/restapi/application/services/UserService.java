@@ -1,19 +1,19 @@
 package com.restapi.application.services;
 
-import com.restapi.application.user.Role;
 import com.restapi.application.user.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
     User saveUser(User user);
 
-    Role saveRole(Role role);
+//    Role saveRole(Role role);
 
-    void addRolesToUser(String username,String rolename);
+//    void addRolesToUser(String username,String rolename);
 
-    User getUser(String username);
+    Optional<User> getUser(String username);
 
     List<User> getUsers();
 
